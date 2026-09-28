@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products - E-Commerce</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <h2>My E-Commerce Store</h2>
+
+    <div>
+        <span>Welcome, {{ session['name'] }}</span>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</nav>
+
+<div class="products-container">
+
+    <h1>Product Catalog</h1>
+
+    <div class="product-grid">
+
+        {% for product in products %}
+
+        <div class="product-card">
+
+            <div class="product-image">
+                🛍️
+            </div>
+
+            <h2>{{ product.name }}</h2>
+
+            <p>{{ product.description }}</p>
+
+            <h3>₹{{ product.price }}</h3>
+
+            <p>Stock: {{ product.stock }}</p>
+
+            <form action="{{ url_for('add_to_cart', product_id=product.id) }}" method="POST">
+    <button type="submit">Add to Cart 🛒</button>
+</form>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

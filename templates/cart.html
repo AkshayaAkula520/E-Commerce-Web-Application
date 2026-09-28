@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <h2>My E-Commerce Store</h2>
+
+    <div>
+        <a href="{{ url_for('products') }}">Products</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</nav>
+
+<div class="products-container">
+
+    <h1>Your Shopping Cart 🛒</h1>
+
+    {% if cart_items %}
+
+        {% for item in cart_items %}
+
+        <div class="product-card">
+
+            <h2>{{ item.name }}</h2>
+
+            <p>Price: ₹{{ item.price }}</p>
+
+            <p>Quantity: {{ item.quantity }}</p>
+
+            <h3>Subtotal: ₹{{ item.subtotal }}</h3>
+
+        </div>
+
+        {% endfor %}
+
+        <h2>Total: ₹{{ total }}</h2>
+
+        <a href="{{ url_for('checkout') }}">
+            <button>Proceed to Checkout</button>
+        </a>
+
+    {% else %}
+
+        <h2>Your cart is empty.</h2>
+
+        <a href="{{ url_for('products') }}">
+            Continue Shopping
+        </a>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>

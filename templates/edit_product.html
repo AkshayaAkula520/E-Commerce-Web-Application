@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Product</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <h2>Admin Dashboard 👑</h2>
+
+    <div>
+        <a href="{{ url_for('admin') }}">Admin Dashboard</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</nav>
+
+<div class="container">
+
+    <h1>Edit Product</h1>
+
+    <form method="POST">
+
+        <input type="text"
+               name="name"
+               value="{{ product.name }}"
+               required>
+
+        <input type="text"
+               name="description"
+               value="{{ product.description }}"
+               required>
+
+        <input type="number"
+               name="price"
+               value="{{ product.price }}"
+               step="0.01"
+               required>
+
+        <input type="text"
+               name="image"
+               value="{{ product.image }}">
+
+        <input type="number"
+               name="stock"
+               value="{{ product.stock }}"
+               required>
+
+        <button type="submit">
+            Update Product
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
